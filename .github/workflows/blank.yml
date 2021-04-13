@@ -8,9 +8,7 @@ on:
 
 jobs:
   build:
-    runs-on: windows-latest
-    env:
-      config: 'Release'
+    runs-on: ubuntu-latest
       
     steps:
     - uses: actions/checkout@v2
@@ -25,7 +23,7 @@ jobs:
       
       # build project
     - name: Build
-      run: dotnet build
+      run: dotnet build --configuration Release --no-restore
       
     - name: Run tests
-      run: dotnet test
+      run: dotnet test --no-restore --verbosity normal
