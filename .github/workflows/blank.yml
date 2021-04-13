@@ -8,7 +8,7 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
       
     steps:
     - uses: actions/checkout@v2
@@ -19,11 +19,11 @@ jobs:
       
       # restore dependencies  
     - name: Install dependencies
-      run: dotnet restore
+      run: dotnet restore MVCUnitTesting.sln
       
       # build project
     - name: Build
-      run: dotnet build --configuration Release --no-restore
+      run: dotnet build MVCUnitTesting.sln --configuration Release --no-restore
       
     - name: Run tests
-      run: dotnet test --no-restore --verbosity normal
+      run: dotnet test MVCUnitTesting.sln --no-restore --verbosity normal
